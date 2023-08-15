@@ -1,0 +1,21 @@
+name: service-js
+
+on:
+  push:
+    branches:
+      - service-js
+  pull_request:
+    branches:
+      - service-js
+
+jobs:
+  deploy:
+    name: Deploy Server JS to Render
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to Render
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: ${{ secrets.SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_API_KEY }}
